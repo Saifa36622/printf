@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putstr+write.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smeethon <smeethon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/11 23:57:11 by smeethon          #+#    #+#             */
-/*   Updated: 2022/09/12 00:07:06 by smeethon         ###   ########.fr       */
+/*   Created: 2022/09/12 00:03:29 by smeethon          #+#    #+#             */
+/*   Updated: 2022/09/12 00:11:00 by smeethon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdarg.h>
+int	write2(char c)
+{
+	return (write (1, &c, 1));
+}
 
-int		ft_printf(const char *str, ...);
-int     write2 (char c);
-int     putstr(char *x);
+int	putstr(char *x)
+{
+	int	y;
 
-#endif
+	y = 0;
+	if (!x)
+	{
+		y += putstr("(null)");
+		return (y);
+	}
+	while (*x != '\0')
+	{
+		y += putstr(*x);
+		x++;
+	}
+	return (y);
+}
