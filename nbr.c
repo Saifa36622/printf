@@ -1,30 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   nbr.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smeethon <smeethon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/11 23:57:11 by smeethon          #+#    #+#             */
-/*   Updated: 2022/09/12 03:58:20 by smeethon         ###   ########.fr       */
+/*   Created: 2022/09/12 01:51:23 by smeethon          #+#    #+#             */
+/*   Updated: 2022/09/12 03:51:00 by smeethon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdarg.h>
+int	nbr(int n)
+{
+	int	x;
 
-int	ft_printf(const char *str, ...);
-int	write2(char c);
-int	putstr(char *x);
-int	ptr2(unsigned long x);
-int	check2(va_list x, const char str);
-int	nbr(int n);
-int	unbr(unsigned int n);
-int	bigx(unsigned int x);
-int	lowx(unsigned int x);
+	x = 0;
+	if (n == -2147483648)
+	{
+		return (write(1, "-2147483648", 11));
+	}
+	if (n < 0)
+	{
+		n = -n;
+		x += write2('-');
+	}
+	if (n / 10)
+		x += nbr(n / 10);
+	x += write2 (n % 10 + '0');
+	return (x);
+}
 
-#endif
+int	unbr(unsigned int n)
+{
+	int	x;
+
+	x = 0;
+	if (n / 10)
+		x += unbr(n / 10);
+	x += write2(n % 10 + '0');
+	return (x);
+}

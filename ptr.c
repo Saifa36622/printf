@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ptr.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smeethon <smeethon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/11 23:57:11 by smeethon          #+#    #+#             */
-/*   Updated: 2022/09/12 03:58:20 by smeethon         ###   ########.fr       */
+/*   Created: 2022/09/12 00:17:10 by smeethon          #+#    #+#             */
+/*   Updated: 2022/09/12 03:58:16 by smeethon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdarg.h>
+int	ptr2(unsigned long x)
+{
+	int	y;
 
-int	ft_printf(const char *str, ...);
-int	write2(char c);
-int	putstr(char *x);
-int	ptr2(unsigned long x);
-int	check2(va_list x, const char str);
-int	nbr(int n);
-int	unbr(unsigned int n);
-int	bigx(unsigned int x);
-int	lowx(unsigned int x);
-
-#endif
+	y = 0;
+	if (x >= 16)
+		y += ptr2(x / 16);
+	if (x % 16 > 9)
+		y += write2(x % 16 + 87);
+	else
+		y += write2(x % 16 + 48);
+	return (y);
+}
+// pointter base 16 
+// 87 <- 'a' - 10
+// 48 <- '0'

@@ -1,30 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   X.c                                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smeethon <smeethon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/11 23:57:11 by smeethon          #+#    #+#             */
-/*   Updated: 2022/09/12 03:58:20 by smeethon         ###   ########.fr       */
+/*   Created: 2022/09/12 02:39:13 by smeethon          #+#    #+#             */
+/*   Updated: 2022/09/12 03:59:48 by smeethon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdarg.h>
+int	bigx(unsigned int x)
+{
+	int	y;
 
-int	ft_printf(const char *str, ...);
-int	write2(char c);
-int	putstr(char *x);
-int	ptr2(unsigned long x);
-int	check2(va_list x, const char str);
-int	nbr(int n);
-int	unbr(unsigned int n);
-int	bigx(unsigned int x);
-int	lowx(unsigned int x);
+	y = 0;
+	if (x >= 16)
+		y += bigx(x / 16);
+	if (x % 16 > 9)
+		y += write2(x % 16 + 55);
+	else
+		y += write2(x % 16 + 48);
+	return (y);
+}
 
-#endif
+int	lowx(unsigned int x)
+{
+	int	y;
+
+	y = 0;
+	if (x >= 16)
+		y += lowx(x / 16);
+	if (x % 16 > 9)
+		y += write2(x % 16 + 87);
+	else
+		y += write2(x % 16 + 48);
+	return (y);
+}
+// 55 -> 'A' - 10
+// 48 -> '0'
