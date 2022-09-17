@@ -1,7 +1,7 @@
 NAME = libftprintf.a
 
 #SRCS := $(shell find . -name '*.c')
-SRCS = ft_printf.c ft_putstr+write.c ptr.c nbr.c X.c
+SRCS = ft_printf.c ft_putstr.c ptr.c nbr.c X.c write2.c
 
 OBJS := $(SRCS:.c=.o)
 
