@@ -12,11 +12,6 @@
 
 #include "ft_printf.h"
 
-int	write2(char c)
-{
-	return (write (1, &c, 1));
-}
-
 int	putstr(char *x)
 {
 	int	y;
