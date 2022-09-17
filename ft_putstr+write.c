@@ -6,7 +6,7 @@
 /*   By: smeethon <smeethon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 00:03:29 by smeethon          #+#    #+#             */
-/*   Updated: 2022/09/12 03:45:30 by smeethon         ###   ########.fr       */
+/*   Updated: 2022/09/18 03:19:24 by smeethon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	putstr(char *x)
 		y += putstr("(null)");
 		return (y);
 	}
-	while (*x != '\0')
+	while (*x)
 	{
 		y += write2(*x);
 		x++;
