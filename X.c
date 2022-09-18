@@ -6,7 +6,7 @@
 /*   By: smeethon <smeethon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 02:39:13 by smeethon          #+#    #+#             */
-/*   Updated: 2022/09/12 03:59:48 by smeethon         ###   ########.fr       */
+/*   Updated: 2022/09/18 23:35:38 by smeethon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ int	lowx(unsigned int x)
 		y += write2(x % 16 + 48);
 	return (y);
 }
-// 55 -> 'A' - 10
+// 55 -> 'A' - 10 (-10 to make % -> the num after . not too much)
 // 48 -> '0'
